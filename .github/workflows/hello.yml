@@ -1,0 +1,10 @@
+name: Say Hello
+
+on: [push]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "Hello! New update in my-local-setup!"
