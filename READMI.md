@@ -1,25 +1,7 @@
-# My Local Computer Setup – Full Guide
+# My Local Setup - Windows Commands  
 
-> This repo documents **every command** I run on **my own computer** (not cloud).
+This is my notebook for commands on my Windows PC.  
 
----
-
-## 1. Open Terminal / Command Prompt
-
-| OS | How to Open |
-|----|-------------|
-| **Windows** | Press `Win + R` → type `cmd` → Enter |
-| **macOS** | Press `Cmd + Space` → type `Terminal` |
-| **Linux** | Press `Ctrl + Alt + T` |
-
----
-
-## 2. Check System Info
-
-```bash
-# Windows (CMD)
-systeminfo
-
-# macOS / Linux (Terminal)
-uname -a
-df -h
+### Command 1: Go to Desktop  
+```cmd  
+cd %USERPROFILE%\Desktop  
