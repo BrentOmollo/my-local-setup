@@ -22,7 +22,7 @@ jobs:
       - name: Run my batch script (and fail workflow if it errors)
         shell: cmd
         run: |
-          call make-hello.bat
+          call hello.bat
           if %errorlevel% neq 0 exit /b %errorlevel%
       - name: Create backup zip of all scripts
         run: powershell Compress-Archive -Path *.bat, README.md -DestinationPath My-Local-Setup-Latest.zip
