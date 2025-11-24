@@ -1,11 +1,18 @@
-name: Say Hello
+name: My Windows CI/CD
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:    # adds the "Run workflow" button
 
 jobs:
-  greet:
-    runs-on: ubuntu-latest
+  build-and-test:
+    runs-on: windows-latest   # ← important!
+
     steps:
-      - name: Say Hello
-        run: echo "Hello! New update in my-local-setup!"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Say hello (test the workflow itself)
+        run: echo "Workflow is running on Windows!"
    
