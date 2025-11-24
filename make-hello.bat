@@ -1,7 +1,8 @@
-batch
-@echo off  
-echo Starting...  
-cd %USERPROFILE%\Desktop  
-echo Hello from my-local-setup! > hello.txt  
-echo Done! Check your Desktop for hello.txt.  
+@echo off
+echo Test: Robot is working!
+cd /d "%USERPROFILE%\Desktop"
+echo Hello! This workflow just ran on GitHub Actions! > hello-from-github.txt
+echo.
+echo Success! Check Desktop for hello-from-github.txt
+echo.
 pause
