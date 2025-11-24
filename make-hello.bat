@@ -1,4 +1,4 @@
-```bat
+batch
 @echo off  
 echo Starting...  
 cd %USERPROFILE%\Desktop  
