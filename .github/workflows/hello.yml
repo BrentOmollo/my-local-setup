@@ -19,9 +19,11 @@ jobs:
         shell: cmd  # ← Add this line
         run: type hello.bat
 
-      - name: Run my batch script
-        shell: cmd  # ← Add this line
-        run: call hello.bat
+      - name: Run my batch script (and fail workflow if it errors)
+        shell: cmd
+        run: |
+          call make-hello.bat
+          if %errorlevel% neq 0 exit /b %errorlevel%
       - name: Create backup zip of all scripts
         run: powershell Compress-Archive -Path *.bat, README.md -DestinationPath My-Local-Setup-Latest.zip
 
