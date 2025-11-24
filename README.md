@@ -7,3 +7,4 @@ This is my notebook for commands on my Windows PC.
 cd %USERPROFILE%\Desktop  
 Test: Robot is working!
 ![GitHub Actions](https://github.com/BrentOmollo/my-local-setup/actions/workflows/hello.yml/badge.svg)
+![CI/CD Pipeline](https://github.com/BrentOmollo/my-local-setup/actions/workflows/hello.yml/badge.svg)
