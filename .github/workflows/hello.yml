@@ -15,4 +15,10 @@ jobs:
 
       - name: Say hello (test the workflow itself)
         run: echo "Workflow is running on Windows!"
-   
+           - name: Show the batch file content
+     shell: cmd  # ← Add this line
+     run: type make-hello.bat
+
+   - name: Run my batch script
+     shell: cmd  # ← Add this line
+     run: call make-hello.bat
