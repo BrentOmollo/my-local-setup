@@ -8,13 +8,4 @@ jobs:
     steps:
       - name: Say Hello
         run: echo "Hello! New update in my-local-setup!"
-   - name: List all files
-     run: dir /s /b   # Windows command to list everything
-        - name: Create backup zip
-     run: |
-       powershell Compress-Archive -Path *.bat, README.md -DestinationPath backup.zip
-   - name: Upload backup as artifact
-     uses: actions/upload-artifact@v4
-     with:
-       name: script-backup
-       path: backup.zip
+   
