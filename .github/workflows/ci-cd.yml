@@ -1,6 +1,5 @@
-name: CI/CD Pipeline
+name: CI + Deploy to GitHub Pages
 
-# When to run
 on:
   push:
     branches: [ main, master ]
@@ -8,36 +7,43 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build-and-test:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code
-      - name: Checkout repository
+      # 1. Get the code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. Setup Node.js (change version if needed)
+      # 2. Set up Node.js (change version only if you need something else)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'  # or 18, 22, etc.
-          cache: 'npm'        # speeds up installs
+          node-version: '20'
+          cache: 'npm'          # huge speed boost
 
-      # 3. Install dependencies
+      # 3. Install dependencies (clean & reliable)
       - name: Install dependencies
-        run: npm ci                # use npm ci for clean install
+        run: npm ci
 
-      # 4. Run tests
+      # 4. Run tests (remove or change if you don't have tests yet)
       - name: Run tests
-        run: npm test              # or: npm run test:ci
+        run: npm test --if-present   # --if-present = won't fail if no test script
 
-      # 5. Build project (if needed)
-      - name: Build project
-        run: npm run build         # remove if no build step (like Python)
+      # 5. Build the project
+      - name: Build
+        run: npm run build --if-present
 
-      # Optional: Upload build artifacts (useful for downloads)
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+      # 6. Deploy to GitHub Pages (only on push to main)
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: build-output
-          path: dist/                # or build/, public/, etc.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist          # Common folders:
+                                        # Vite   → dist
+                                        # Create React App → build
+                                        # Next.js static export → out
+                                        # Change this line if yours is different!
+
+      
